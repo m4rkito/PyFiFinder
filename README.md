@@ -1,4 +1,4 @@
-#PyFinder
+# PyFinder
 
 <p>PyFinder is a basic tool to search for archives passing their formats</p>
 
