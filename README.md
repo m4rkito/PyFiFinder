@@ -6,12 +6,12 @@
 
 create PyFinder object by passing path to directorie and passing one list that containg all formats to search
 
-'''python
+```python
 from pyfinder import pyfinder
 
 finder = PyFinder('path/to/search', ['mp3', 'mp4', 'mkv'])
 print(finder.data)
-'''
+```
 
 Author: M4rk
 License: MIT
