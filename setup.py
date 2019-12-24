@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="PyFiFinder", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="M4rk(Marcelo almeida)",
     author_email="marcelorap345@gmail.com",
     description="this is a tool to search for archives by passing their specifc formats",

@@ -7,9 +7,9 @@
 create PyFiFinder object by passing path to directorie and passing one list that containg all formats to search
 
 ```python
-from pyfinder import PyFiFinder
+from PyFiFinder import PyFinder
 
-finder = PyFiFinder('path/to/search', ['mp3', 'mp4', 'mkv'])
+finder = PyFinder('path/to/search', ['mp3', 'mp4', 'mkv'])
 print(finder.data)
 ```
 
