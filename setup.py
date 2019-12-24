@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="PyFinder", # Replace with your own username
+    name="PyFiFinder", # Replace with your own username
     version="0.0.1",
     author="M4rk(Marcelo almeida)",
     author_email="marcelorap345@gmail.com",
     description="this is a tool to search for archives by passing their specifc formats",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/m4rkito/PyFinder",
+    url="https://github.com/m4rkito/PyFiFinder",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
