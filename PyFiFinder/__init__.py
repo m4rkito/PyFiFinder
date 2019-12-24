@@ -1,1 +1,1 @@
-from pyfinder.pyf import PyFinder
+from PyFiFinder.pyf import PyFinder
