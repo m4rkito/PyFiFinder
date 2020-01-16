@@ -13,16 +13,25 @@ class PyFinder():
 		
 		# Stores formats for search
 		self.formats = formats
+		
+		# Stores each format of organized way
+		new_formats = {}
+		
+		# loop throug of each format
+		for f in self.formats:
+			# Default formats in one dictionary
+			new_formats[f] = []
+
 		# Tell for PyFinder search in hidden directories
 		self.deep = deep
 		# Stores the start of search
-		self.raiz = folder
+		self.initial_folder = folder
 		# Listing of all files in this folder
 		data_base = os.listdir('.')
 		# Searching data base of application
 		if 'pyfinder.json' not in data_base:
 			# Data base format
-			self.data = {'status': 0, 'archives': []}
+			self.data = {'status': 0, 'archives': new_formats}
 			# Function for save data
 			self.save()
 
@@ -30,14 +39,20 @@ class PyFinder():
 			# Load all data
 			self.load()
 
-		self.init()
-
 
 	def init(self):
 		# Start file search
-		self.find(self.raiz)
+		self.find(self.initial_folder)
 		# Save results
 		self.save()
+
+	
+	def change_folder(salf, folder):
+		'''
+		this function change default folder to search
+		'''
+
+		self.initial_folder = folder
 
 
 	def save(self):
@@ -75,11 +90,15 @@ class PyFinder():
 
 						self.find(str(element))
 					# Check if this is a file
-					elif element.is_file():
+					elif element.is_file():						
+
 						# Call this function for find the format of this archive.
-						if self.verify_archive(str(element)):
+						# If this archive has one format that is in self.formats, True will be returned.
+						found = self.verify_archive(str(element))
+
+						if found[0]:
 							# stores path to file
-							self.data['archives'].append(str(element))
+							self.data['archives'][found[1]].append(str(element))
 
 				else:
 					# Check if is not hidden file or folder
@@ -91,10 +110,14 @@ class PyFinder():
 							self.find(str(element))
 						# Check if this is file
 						elif element.is_file():
-							# Check if this is not hidden file or folder
-							if self.verify_archive(str(element)):
+
+							# Call this function for find the format of this archive.
+							# If this archive has one format that is in self.formats, True will be returned
+							found = self.verify_archive(str(element))
+
+							if found[0]:
 								# Stores path in data
-								self.data['archives'].append(str(element))
+								self.data['archives'][found[1]].append(str(element))
 
 		except (PermissionError, OSError):
 
@@ -116,7 +139,7 @@ class PyFinder():
 		self.log.write(log)
 		self.log.close()
 
-	def verify_archive(self, archive):
+	def verify_archive(self, archive:str) -> list:
 		'''
 		Check if this file is not hidden
 		'''
@@ -124,9 +147,12 @@ class PyFinder():
 		for f in self.formats:
 
 			if re.findall(f'.\.{f}', archive):
+				
+				# Data found
+				data = [True, f]
 
-				return True
+				return data
 
-		return False
+		return [False, f]
 
 
