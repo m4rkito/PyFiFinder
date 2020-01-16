@@ -40,11 +40,9 @@ class PyFinder():
 			self.load()
 
 
-	def init(self):
+	def start(self):
 		# Start file search
 		self.find(self.initial_folder)
-		# Save results
-		self.save()
 
 	
 	def change_folder(salf, folder):
