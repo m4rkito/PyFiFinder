@@ -9,9 +9,17 @@ create PyFiFinder object by passing path to directorie and passing one list that
 ```python
 from PyFiFinder import PyFinder
 
+# Create new pyfinder object
 finder = PyFinder('path/to/search', ['mp3', 'mp4', 'mkv'])
-print(finder.data)
+
+# Start the search
+finder.start()
+
+# Save results
+
+finder.save()
+
 ```
 
-Author: M4rk
+Author: M4rk<br/>
 License: MIT
