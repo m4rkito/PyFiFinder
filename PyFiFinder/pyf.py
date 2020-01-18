@@ -99,9 +99,12 @@ class PyFinder():
 							self.data['archives'][found[1]].append(str(element))
 
 				else:
+					# Store filters for shallow searches.
+					deep_keyword = str(element).split('/')[len(str(element).split('/')) - 1]
+
 					# Check if is not hidden file or folder
-					if not re.findall('\..*', str(element).split('/')[len(str(element).split('/')) - 1]) or not re.findall('[Gg]ames', str(element).split('/')[len(str(element).split('/')) - 1]):
-						
+					if deep_keyword != 'dosdevices' and deep_keyword != 'drive_c' and deep_keyword[0] != '.':
+
 						# Check if this is directorie
 						if element.is_dir():
 
